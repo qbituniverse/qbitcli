@@ -1,0 +1,17 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+trigger:
+- master
+
+pr: none
+
+steps:
+- task: Docker@2
+  displayName: buildAndPush
+  inputs:
+    containerRegistry: DockerHub
+    repository: qbituniverse/qbitcli
+    Dockerfile: '.cicd/docker/Dockerfile-qbitcli'
+    buildContext: ''
+    tags: latest

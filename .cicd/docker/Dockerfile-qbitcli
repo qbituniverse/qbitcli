@@ -1,0 +1,5 @@
+FROM    busybox:latest
+LABEL   description="Image containing set of qbitcli files" \
+        maintainer="marcin.narloch@qbituniverse.com"
+
+COPY    cli /qbitcli

@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+# qbitcli
 
-You can use the [editor on GitHub](https://github.com/qbituniverse/qbitcli/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Description
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**qbitcli** is full of useful scripts, covering the following technologies: Azure, Docker, Helm Charts, Kubernetes, MongoDb.
 
-### Markdown
+All resources in **qbitcli** are free, public and constantly updated with new code snippets.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## CLI
 
-```markdown
-Syntax highlighted code block
+-   [az](https://github.com/qbituniverse/qbitcli/blob/master/cli/az.ps1)
+-   [docker](https://github.com/qbituniverse/qbitcli/blob/master/cli/docker.ps1)
+-   [helm](https://github.com/qbituniverse/qbitcli/blob/master/cli/helm.ps1)
+-   [kubectl](https://github.com/qbituniverse/qbitcli/blob/master/cli/kubectl.md)
 
-# Header 1
-## Header 2
-### Header 3
+## Deployment
 
-- Bulleted
-- List
+Open CMD, navigate to location where you need the *qbitcli* resources copied and run the command below. Image always has *latest* tag and it's the only tag.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+docker create --name qbitcli qbituniverse/qbitcli
+docker cp qbitcli:/qbitcli/. qbitcli/
+docker rm -fv qbitcli
+docker rmi -f qbituniverse/qbitcli:latest
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The end result will be a folder structure created as follows:
 
-### Jekyll Themes
+```
+|- qbitcli
+   |- ...files...
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/qbituniverse/qbitcli/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Usage
 
-### Support or Contact
+The *qbitcli* folder contains set of powershell files that you can use to manage Docker, Kubernetes, Helm Charts and Azure.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Simply select the powershell you want to run and pass *--help* operation to discover what operations are available for a particular powershell. For instance, for Docker do this:
+
+```
+docker.ps1 --help
+```
+
+Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell. For instance, to view Docker environment, do this:
+
+```
+docker.ps1
+```
+
+The above will print out Docker system output, Images, Containers, Volumes and any Dangling resources.
+
+## Links
+
+**qbitcli** is available on: [GitHub](https://github.com/qbituniverse/qbitcli) - [DockerHub](https://cloud.docker.com/u/qbituniverse/repository/docker/qbituniverse/qbitcli) - [Web](https://qbituniverse.com)
