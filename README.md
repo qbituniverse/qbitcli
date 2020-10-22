@@ -8,10 +8,10 @@ All resources in **qbitcli** are free, public and constantly updated with new co
 
 ## CLI
 
--   [az](https://github.com/qbituniverse/qbitcli/blob/master/cli/az.ps1)
--   [docker](https://github.com/qbituniverse/qbitcli/blob/master/cli/docker.ps1)
--   [helm](https://github.com/qbituniverse/qbitcli/blob/master/cli/helm.ps1)
--   [kubectl](https://github.com/qbituniverse/qbitcli/blob/master/cli/kubectl.md)
+-   [az.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/az.ps1)
+-   [docker.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/docker.ps1)
+-   [helm.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/helm.ps1)
+-   [kubectl.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/kubectl.ps1)
 
 ## Deployment
 
@@ -41,13 +41,13 @@ Simply select the powershell you want to run and pass *--help* operation to disc
 docker.ps1 --help
 ```
 
-Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell. For instance, to view Docker environment, do this:
+Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell. For instance, to view Kubernetes environment, do this:
 
 ```
-docker.ps1
+kubectl.ps1
 ```
 
-The above will print out Docker system output, Images, Containers, Volumes and any Dangling resources.
+The above will print out Kubernetes system output, Pods, Services, Deployments and so on.
 
 ## Links
 
