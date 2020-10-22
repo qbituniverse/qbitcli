@@ -2,7 +2,7 @@
 
 ## Description
 
-**qbitcli** is full of useful scripts, covering the following technologies: Azure, Docker, Helm Charts, Kubernetes, MongoDb.
+**qbitcli** is a bundle full of useful scripts, covering the following technologies: **Azure, Docker, Kubernetes and Helm Charts**.
 
 All resources in **qbitcli** are free, public and constantly updated with new code snippets.
 
@@ -10,8 +10,8 @@ All resources in **qbitcli** are free, public and constantly updated with new co
 
 -   [az.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/az.ps1)
 -   [docker.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/docker.ps1)
--   [helm.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/helm.ps1)
 -   [kubectl.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/kubectl.ps1)
+-   [helm.ps1](https://github.com/qbituniverse/qbitcli/blob/master/cli/helm.ps1)
 
 ## Deployment
 
@@ -33,21 +33,21 @@ The end result will be a folder structure created as follows:
 
 ## Usage
 
-The *qbitcli* folder contains set of powershell files that you can use to manage Docker, Kubernetes, Helm Charts and Azure.
+The *qbitcli* folder contains set of powershell files that you can use to manage *Azure, Docker, Kubernetes and Helm Charts*.
 
 ### Core Flags
 |Flag|Description|
 |-|-|
-|--help|Prints out help page describing code CLI flags|
+|--help|Prints out help page describing relevant CLI flags|
 
 ### Examples
-Simply select the powershell you want to run and pass *--help* operation to discover what operations are available for a particular powershell.
+Simply select the powershell you want to run and pass *--help* operation to discover what operations are available for a particular cli.
 
 ```
 docker.ps1 --help
 ```
 
-Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell.
+Running the powershell without any flag, will simply print out snapshot of the environment for a particular cli.
 
 ```
 kubectl.ps1
