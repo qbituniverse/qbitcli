@@ -35,19 +35,23 @@ The end result will be a folder structure created as follows:
 
 The *qbitcli* folder contains set of powershell files that you can use to manage Docker, Kubernetes, Helm Charts and Azure.
 
-Simply select the powershell you want to run and pass *--help* operation to discover what operations are available for a particular powershell. For instance, for Docker do this:
+### Core Flags
+|Flag|Description|
+|-|-|
+|--help|Prints out help page describing code CLI flags|
+
+### Examples
+Simply select the powershell you want to run and pass *--help* operation to discover what operations are available for a particular powershell.
 
 ```
 docker.ps1 --help
 ```
 
-Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell. For instance, to view Kubernetes environment, do this:
+Running the powershell without any flag, will simply print out snapshot of the environment for a particular powershell.
 
 ```
 kubectl.ps1
 ```
-
-The above will print out Kubernetes system output, Pods, Services, Deployments and so on.
 
 ## Links
 
