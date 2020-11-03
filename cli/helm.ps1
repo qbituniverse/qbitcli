@@ -1,52 +1,57 @@
 [CmdletBinding()]
 Param
 (
-	[Parameter(Position=0,Mandatory=$false,HelpMessage="Operation: --view | --init")]
-	[string]$Operation
+    [Parameter(Position=0,Mandatory=$false,HelpMessage="Operation: --view")]
+    [string]$Operation
 )
 
 If ($Operation -in "--help") {
-	Write-Host -ForegroundColor Green ""
-	Write-Host -ForegroundColor Green "Helm Environment:"
-	Write-Host -ForegroundColor Green ""
-	Write-Host -ForegroundColor Green "	[operation]"
-	Write-Host -ForegroundColor Green ""
-	Write-Host -ForegroundColor Green "	--view			View all Helm resources"
-    Write-Host -ForegroundColor Green "	--init			Upgrade Helm on the cluster"
-	Write-Host -ForegroundColor Green ""
-	Write-Host -ForegroundColor Green ""
-	Write-Host -ForegroundColor Green "Usage:"
-	Write-Host -ForegroundColor Green "				helm.ps1 [operation]"
-	Write-Host -ForegroundColor Green ""
-	Exit
+    Write-Host -ForegroundColor Green ""
+    Write-Host -ForegroundColor Green "Helm Environment:"
+    Write-Host -ForegroundColor Green ""
+    Write-Host -ForegroundColor Green " [operation]"
+    Write-Host -ForegroundColor Green ""
+    Write-Host -ForegroundColor Green " --view          View all Helm resources"
+    Write-Host -ForegroundColor Green ""
+    Write-Host -ForegroundColor Green ""
+    Write-Host -ForegroundColor Green "Usage:"
+    Write-Host -ForegroundColor Green "             helm.ps1 [operation]"
+    Write-Host -ForegroundColor Green ""
+    Exit
 }
 
 If ($Operation -in ("--view", "")) {
-	Write-Host -ForegroundColor Green "=========================================================="
-	Write-Host -ForegroundColor Green "Current Azure Subscription"
-	Write-Host -ForegroundColor Green "=========================================================="
-	
-	az account show --query "name" --output tsv
+    Write-Host -ForegroundColor Green "=========================================================="
+    Write-Host -ForegroundColor Green "Current Context"
+    Write-Host -ForegroundColor Green "=========================================================="
+    
+    kubectl config get-contexts
 
-	Write-Host ""
-	Write-Host -ForegroundColor Green "=========================================================="
-	Write-Host -ForegroundColor Green "ACR Repository Helm Charts"
-	Write-Host -ForegroundColor Green "=========================================================="
-	
-	az acr helm list
+    Write-Host ""
+    Write-Host -ForegroundColor Green "=========================================================="
+    Write-Host -ForegroundColor Green "Releases"
+    Write-Host -ForegroundColor Green "=========================================================="
+    
+    helm list --all --all-namespaces
 
-	Write-Host ""
-} ElseIf ($Operation -eq "--init") {
-	Write-Host -ForegroundColor Red "=========================================================="
-	Write-Host -ForegroundColor Red "Upgrading Helm on the Cluster"
-	Write-Host -ForegroundColor Red "=========================================================="
-	
-	helm init --upgrade
+    Write-Host ""
+    Write-Host -ForegroundColor Green "=========================================================="
+    Write-Host -ForegroundColor Green "Repositories"
+    Write-Host -ForegroundColor Green "=========================================================="
+    
+    helm repo list
 
-	Write-Host ""
+    Write-Host ""
+    Write-Host -ForegroundColor Green "=========================================================="
+    Write-Host -ForegroundColor Green "Plugins"
+    Write-Host -ForegroundColor Green "=========================================================="
+    
+    helm plugin list
+
+    Write-Host ""
 } Else {
-	Write-Host -ForegroundColor Red "=========================================================="
-	Write-Host -ForegroundColor Red "Wrong Operation Received"
-	Write-Host -ForegroundColor Red "Use: --view | --init"
-	Write-Host -ForegroundColor Red "=========================================================="
+    Write-Host -ForegroundColor Red "=========================================================="
+    Write-Host -ForegroundColor Red "Wrong Operation Received"
+    Write-Host -ForegroundColor Red "Use: --view"
+    Write-Host -ForegroundColor Red "=========================================================="
 }
