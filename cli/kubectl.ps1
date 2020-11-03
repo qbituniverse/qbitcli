@@ -67,13 +67,6 @@ If ($Operation -in ("--view", "--view-wide", "")) {
 		kubectl get namespaces -o wide
 	}
 
-	#Write-Host ""
-	#Write-Host -ForegroundColor Green "=========================================================="
-	#Write-Host -ForegroundColor Green "Releases"
-	#Write-Host -ForegroundColor Green "=========================================================="
-	
-	#helm list
-
 	Write-Host ""
 	Write-Host -ForegroundColor Green "=========================================================="
 	Write-Host -ForegroundColor Green "Ingress"
