@@ -53,6 +53,10 @@ Running the powershell without any flag, will simply print out snapshot of the e
 kubectl.ps1
 ```
 
+## Uninstall
+
+Navigate to location where *qbitcli* resources are installed and delete the *qbitcli* folder.
+
 ## Links
 
 **qbitcli** is available on: [GitHub](https://github.com/qbituniverse/qbitcli) - [DockerHub](https://cloud.docker.com/u/qbituniverse/repository/docker/qbituniverse/qbitcli) - [Web](https://qbituniverse.com)
