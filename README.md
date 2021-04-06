@@ -19,7 +19,7 @@ Open CMD, navigate to location where you need the *qbitcli* resources copied and
 
 ```
 docker create --name qbitcli qbituniverse/qbitcli
-docker cp qbitcli:/qbitcli/. qbitcli/
+docker cp qbitcli:/qbitcli/. .qbitcli/
 docker rm -fv qbitcli
 docker rmi -f qbituniverse/qbitcli:latest
 ```
@@ -27,13 +27,13 @@ docker rmi -f qbituniverse/qbitcli:latest
 The end result will be a folder structure created as follows:
 
 ```
-|- qbitcli
+|- .qbitcli
    |- ...files...
 ```
 
 ## Usage
 
-The *qbitcli* folder contains set of powershell files that you can use to manage *Azure, Docker, Kubernetes and Helm Charts*.
+The *.qbitcli* folder contains set of powershell files that you can use to manage *Azure, Docker, Kubernetes and Helm Charts*.
 
 ### Core Flags
 |Flag|Description|
@@ -55,7 +55,7 @@ kubectl.ps1
 
 ## Uninstall
 
-Navigate to location where *qbitcli* resources are installed and delete the *qbitcli* folder.
+Navigate to location where *qbitcli* resources are installed and delete the *.qbitcli* folder.
 
 ## Links
 
