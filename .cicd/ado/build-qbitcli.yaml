@@ -22,7 +22,7 @@ stages:
   pool:
     name: self-hosted-ado-agents
     demands:
-    - agent.name -equals ado-agent-arm64
+    - agent.name -equals ado-agent-amd64
   variables:
     imageDockerfile: .cicd/docker/Dockerfile-qbitcli
     imageRepository: qbituniverse/qbitcli
