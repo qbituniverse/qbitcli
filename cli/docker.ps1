@@ -13,9 +13,12 @@ If ($Operation -in "--help") {
 	Write-Host -ForegroundColor Green ""
 	Write-Host -ForegroundColor Green "	--view			View all docker resources: system stats, network, all images, all containers, all volumes, dangling volumes, dangling images."
 	Write-Host -ForegroundColor Green "	--pd			Prune dangling volumes & images."
-	Write-Host -ForegroundColor Green "	--pu			Prune unused volumes & images."
-	Write-Host -ForegroundColor Green "	--pc			Prune containers."
-	Write-Host -ForegroundColor Green "	--pa			Prune entire system."
+	Write-Host -ForegroundColor Green "	--pu			Prune unused volumes, images & networks."
+	Write-Host -ForegroundColor Green "	--pai			Prune all images."
+	Write-Host -ForegroundColor Green "	--pav			Prune all volumes."
+	Write-Host -ForegroundColor Green "	--pan			Prune all networks."
+	Write-Host -ForegroundColor Green "	--pac			Prune all containers."
+	Write-Host -ForegroundColor Green "	--p-all			Prune entire system."
 	Write-Host -ForegroundColor Green ""
 	Write-Host -ForegroundColor Green ""
 	Write-Host -ForegroundColor Green "Usage:"
@@ -103,7 +106,42 @@ If ($Operation -in ("--view", "")) {
 	docker image prune -af
 
 	Write-Host ""
-} ElseIf ($Operation -eq "--pc") {
+	Write-Host -ForegroundColor Red "=========================================================="
+	Write-Host -ForegroundColor Red "Removing Unused Networks"
+	Write-Host -ForegroundColor Red "=========================================================="
+	
+	docker network prune -f
+
+	Write-Host ""
+} ElseIf ($Operation -eq "--pai") {
+	Write-Host -ForegroundColor Red "=========================================================="
+	Write-Host -ForegroundColor Red "Removing All Images"
+	Write-Host -ForegroundColor Red "=========================================================="
+	
+	docker rmi -f $(docker images -qf dangling=true)
+	docker rmi -f $(docker images -q)
+	docker image prune -af
+
+	Write-Host ""
+} ElseIf ($Operation -eq "--pav") {
+	Write-Host -ForegroundColor Red "=========================================================="
+	Write-Host -ForegroundColor Red "Removing All Volumes"
+	Write-Host -ForegroundColor Red "=========================================================="
+	
+	docker volume rm (docker volume ls -qf dangling=true)
+	docker volume rm $(docker volume ls)
+	docker volume prune -f
+
+	Write-Host ""
+} ElseIf ($Operation -eq "--pan") {
+	Write-Host -ForegroundColor Red "=========================================================="
+	Write-Host -ForegroundColor Red "Removing All Networks"
+	Write-Host -ForegroundColor Red "=========================================================="
+	
+	docker network prune -f
+
+	Write-Host ""
+} ElseIf ($Operation -eq "--pac") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	Write-Host -ForegroundColor Red "Removing All Containers"
 	Write-Host -ForegroundColor Red "=========================================================="
@@ -111,7 +149,7 @@ If ($Operation -in ("--view", "")) {
 	docker rm -fv $(docker ps -aq)
 
 	Write-Host ""
-} ElseIf ($Operation -eq "--pa") {
+} ElseIf ($Operation -eq "--p-all") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	Write-Host -ForegroundColor Red "Removing All Containers"
 	Write-Host -ForegroundColor Red "=========================================================="
@@ -135,9 +173,16 @@ If ($Operation -in ("--view", "")) {
 	docker volume prune -f
 
 	Write-Host ""
+	Write-Host -ForegroundColor Red "=========================================================="
+	Write-Host -ForegroundColor Red "Removing All Networks"
+	Write-Host -ForegroundColor Red "=========================================================="
+	
+	docker network prune -f
+
+	Write-Host ""
 } Else {
 	Write-Host -ForegroundColor Red "=========================================================="
 	Write-Host -ForegroundColor Red "Wrong Operation Received"
-	Write-Host -ForegroundColor Red "Use: --view | --pd | --pu | --pc | --pa"
+	Write-Host -ForegroundColor Red "Use: --view | --pd | --pu | --pai | --pav | --pan | --pac | --p-all"
 	Write-Host -ForegroundColor Red "=========================================================="
 }
