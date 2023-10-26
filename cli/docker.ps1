@@ -1,7 +1,7 @@
 [CmdletBinding()]
 Param
 (
-	[Parameter(Position=0,Mandatory=$false,HelpMessage="Operation: --view | --pd | --pu | --pc | --pa")]
+	[Parameter(Position=0,Mandatory=$false,HelpMessage="Operation: --view | --pd | --pu | --pai | --pav | --pan | --pac | --p-all")]
 	[string]$Operation
 )
 
