@@ -96,14 +96,14 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "Removing Dangling Volumes"
 	Write-Host -ForegroundColor Red "=========================================================="
 	
-	If ($AddSudo) { sudo docker volume rm -f $(docker volume ls -qf dangling=true) }
+	If ($AddSudo) { sudo docker volume rm -f $(sudo docker volume ls -qf dangling=true) }
 	Else { docker volume rm -f $(docker volume ls -qf dangling=true) }
 	
 	Write-Host -ForegroundColor Red "=========================================================="
 	Write-Host -ForegroundColor Red "Removing Dangling Images"
 	Write-Host -ForegroundColor Red "=========================================================="
 	
-	If ($AddSudo) { sudo docker rmi -f $(docker images -qf dangling=true) }
+	If ($AddSudo) { sudo docker rmi -f $(sudo docker images -qf dangling=true) }
 	Else { docker rmi -f $(docker images -qf dangling=true) }
 
 	Write-Host ""
@@ -138,8 +138,8 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	
 	If ($AddSudo) { 
-		sudo docker rmi -f $(docker images -qf dangling=true)
-		sudo docker rmi -f $(docker images -q)
+		sudo docker rmi -f $(sudo docker images -qf dangling=true)
+		sudo docker rmi -f $(sudo docker images -q)
 		sudo docker image prune -af
 	} Else {
 		docker rmi -f $(docker images -qf dangling=true)
@@ -154,8 +154,8 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	
 	If ($AddSudo) { 
-		sudo docker volume rm (docker volume ls -qf dangling=true)
-		sudo docker volume rm $(docker volume ls)
+		sudo docker volume rm (sudo docker volume ls -qf dangling=true)
+		sudo docker volume rm $(sudo docker volume ls)
 		sudo docker volume prune -f
 	} Else {
 		docker volume rm (docker volume ls -qf dangling=true)
@@ -178,7 +178,7 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "Removing All Containers"
 	Write-Host -ForegroundColor Red "=========================================================="
 	
-	If ($AddSudo) { sudo docker rm -fv $(docker ps -aq) }
+	If ($AddSudo) { sudo docker rm -fv $(sudo docker ps -aq) }
 	Else { docker rm -fv $(docker ps -aq) }
 
 	Write-Host ""
@@ -187,7 +187,7 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "Removing All Containers"
 	Write-Host -ForegroundColor Red "=========================================================="
 	
-	If ($AddSudo) { sudo docker rm -fv $(docker ps -aq) }
+	If ($AddSudo) { sudo docker rm -fv $(sudo docker ps -aq) }
 	Else { docker rm -fv $(docker ps -aq) }
 
 	Write-Host -ForegroundColor Red "=========================================================="
@@ -195,8 +195,8 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	
 	If ($AddSudo) { 
-		sudo docker rmi -f $(docker images -qf dangling=true)
-		sudo docker rmi -f $(docker images -q)
+		sudo docker rmi -f $(sudo docker images -qf dangling=true)
+		sudo docker rmi -f $(sudo docker images -q)
 		sudo docker image prune -af
 	} Else {
 		docker rmi -f $(docker images -qf dangling=true)
@@ -209,8 +209,8 @@ If ($Operation -in "--h") {
 	Write-Host -ForegroundColor Red "=========================================================="
 	
 	If ($AddSudo) { 
-		sudo docker volume rm (docker volume ls -qf dangling=true)
-		sudo docker volume rm $(docker volume ls)
+		sudo docker volume rm (sudo docker volume ls -qf dangling=true)
+		sudo docker volume rm $(sudo docker volume ls)
 		sudo docker volume prune -f
 	} Else {
 		docker volume rm (docker volume ls -qf dangling=true)
